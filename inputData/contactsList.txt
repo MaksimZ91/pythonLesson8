@@ -1,0 +1,3 @@
+surname:Бегемотов name:Кот patronymic:Михайлович telephone:+789524545
+surname:Орлов name:Максим patronymic:Иванович telephone:+789557785
+surname:Кац name:Егор patronymic:Петрович telephone:+78934646745

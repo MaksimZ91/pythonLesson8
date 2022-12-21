@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <contacts>
+        <surname>Бегемотов</surname>
+        <name>Кот</name>
+        <patronymic>Михайлович</patronymic>
+        <telephone>+789524545</telephone>
+    </contacts>
+    <contacts>
+        <surname>Орлов</surname>
+        <name>Максим</name>
+        <patronymic>Иванович</patronymic>
+        <telephone>+789557785</telephone>
+    </contacts>
+    <contacts>
+        <surname>Кац</surname>
+        <name>Егор</name>
+        <patronymic>Петрович</patronymic>
+        <telephone>+78934646745</telephone>
+    </contacts>
+</root>
