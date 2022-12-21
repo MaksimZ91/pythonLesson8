@@ -1,4 +1,3 @@
-surname:Бегемотов name:Кот patronymic:Михайлович telephone:+789524545
 surname:Бегемотов name:Симон patronymic:Михайлович telephone:+789524545
 surname:Кот name:Кот patronymic:Михайлович telephone:+789524545
 surname:Зигмудн name:Фред patronymic:Михайлович telephone:+789524545

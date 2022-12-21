@@ -25,38 +25,39 @@ def  findAll():
   # return  
 
 
-def updateContact():
+def updateContact(fio):
   path = "outputData.txt" 
   folderName = "outputDataOrMemory" 
-  fio = UI.userRequest("Введите данные для посика: ")
+  #fio = UI.userRequest("Введите данные для посика: ")
   data = repository.reader(folderName,path) 
-  contacts = [i for i in assistPrint(data) if fio in i]   
-  number = UI.updateorDeleteConact(contacts)
-  if number == -1:
-    controller.mainMenu()
+  #contacts = [i for i in assistPrint(data) if fio in i]   
+  #number = UI.updateorDeleteConact(contacts)
+ # if number == -1:
+    #controller.mainMenu()
   formatData =  assistPrint(data) 
-  updateNumber = int(UI.updateMenu())
+ # updateNumber = int(UI.updateMenu())
   result = data.split("\n")
-  for i in range(len(formatData)):
-    if contacts[number-1] == formatData[i]:
-      newContact = formatData[i].split()    
-      match updateNumber:
-        case 1:
-          newContact[0] = UI.userRequest("Введите Фамилию: ")
-        case 2:
-          newContact[1] = UI.userRequest("Введите Имя: ")
-        case 3:
-          newContact[2] = UI.userRequest("Введите Отчество: ")
-        case 4:
-          newContact[3] = UI.userRequest("Введите Телефон: ")  
-        case 5:
-            controller.mainMenu()   
-      result[i] = f"surname:{newContact[0]} name:{newContact[1]} patronymic:{newContact[2]} telephone:{newContact[3]}"  
-      payload = repository.update(result)
-      backStep = UI.creatNewContact(payload)      
-      if backStep == 0 :
-        controller.mainMenu()
-      return
+  for i in formatData:
+    if fio == i:
+      newContact = fio.split()   
+      print(i) 
+      # match updateNumber:
+      #   case 1:
+      #     newContact[0] = UI.userRequest("Введите Фамилию: ")
+      #   case 2:
+      #     newContact[1] = UI.userRequest("Введите Имя: ")
+      #   case 3:
+      #     newContact[2] = UI.userRequest("Введите Отчество: ")
+      #   case 4:
+      #     newContact[3] = UI.userRequest("Введите Телефон: ")  
+        #case 5:
+            #controller.mainMenu()   
+     # result[i] = f"surname:{newContact[0]} name:{newContact[1]} patronymic:{newContact[2]} telephone:{newContact[3]}"  
+      #payload = repository.update(result)
+      # backStep = UI.creatNewContact(payload)      
+      # if backStep == 0 :
+      #   controller.mainMenu()
+      # return
 
 
 def findeOneContact(fio):  
@@ -77,7 +78,7 @@ def deleteContact(fio):
   folderName = "outputDataOrMemory"
   data = repository.reader(folderName,path)  
   #fio = UI.userRequest("Введите данные для посика (Фамили or Имя): ")
-  contacts = [i for i in assistPrint(data) if fio in i]  
+  #contacts = [i for i in assistPrint(data) if fio in i]  
   #number = UI.updateorDeleteConact(contacts)
   formatData =  assistPrint(data)   
   result = data.split("\n")  

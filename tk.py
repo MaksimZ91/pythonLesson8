@@ -17,7 +17,10 @@ def delete():
   listBox.delete(0,END)
   [text.insert("end", f"{i}\n") for i in data]
 
-
+def update():
+  data = listBox.curselection()
+  updateData = listBox.get(data[0])
+  logic.updateContact(updateData)
 
 root = Tk()
 
@@ -31,6 +34,7 @@ listBox.place(x=30, y=60, width=250, height=80)
 
 findeButton = Button(root, text="Найти", command=finde).place(x=530, y=20)
 deleteButton = Button(root, text="Удалить", command=delete).place(x=630, y=20)
+updateButton = Button(root, text="Изменить", command=update).place(x=30, y=20)
 
 data = logic.findAll()
 
