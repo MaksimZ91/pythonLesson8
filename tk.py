@@ -2,11 +2,11 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog as fd 
 from tkinter import messagebox as mb
-import logic
+from controller import finds,findOne,remove,updated,createds,imports,exportss
 
 def finde():
   findeData = findeEntry.get()
-  data = logic.findeOneContact(findeData)
+  data = findOne(findeData)
   if not data:
     mb.showinfo("Информация","Данных по вашему запросу не найденно!") 
   listBox.delete(0,END)
@@ -17,7 +17,7 @@ def delete():
   try:
     data = listBox.curselection()
     deleteData = listBox.get(data[0])
-    flag = logic.deleteContact(deleteData)
+    flag = remove(deleteData)
     if not flag:
       mb.showerror("Ошибка", "Не удалось удалить контакт, при удаление произошла ошибка.")   
     listBox.delete(0,END)
@@ -35,7 +35,7 @@ def update():
       updateDataInfo = updateEntry.get() 
       if not updateDataInfo:
         return mb.showinfo("Внимание","Заполните поле с изменениями и выберите контакт из списка!") 
-      flag = logic.updateContact(updateData,selection,updateDataInfo)
+      flag = updated(updateData,selection,updateDataInfo)
       if not flag:
         mb.showerror("Ошибка", "Не удалось обновить контакт, при обновление произошла ошибка.")    
       listBox.delete(0,END)
@@ -55,7 +55,7 @@ def created():
       dataTelephone = telephoneEntry.get()
       if not dataName or not dataPatronymic or not dataSurname or not dataTelephone:
         return mb.showinfo("Внимание", "Не заполнено одно из полей фамилия/имя/отчество/телефон!")
-      flag = logic.createContact(dataSurname, dataName, dataPatronymic, dataTelephone)
+      flag = createds(dataSurname, dataName, dataPatronymic, dataTelephone)
       if not flag:
         mb.showerror("Ошибка", "Не удалось создать контакт, при создании произошла ошибка.")
       updateContactList()
@@ -80,7 +80,7 @@ def importFile():
     fileName = path.split("/") 
     if not path:
       return mb.showinfo("Внимание", "Не выбран путь к файлу!")
-    flag = logic.importContats(path,fileName[len(fileName)-1]) 
+    flag = imports(path,fileName[len(fileName)-1]) 
     if not flag:
         mb.showerror("Ошибка", "Не удалось импортировать контакты, при импортировании произошла ошибка.")
     updateContactList()
@@ -94,7 +94,7 @@ def exportFile():
     path = exportEntry.get()
     if not path:
       return mb.showinfo("Внимание", "Не выбран путь к файлу!")
-    flag = logic.exportContacts(path)
+    flag = exportss(path)
     if not flag:
       mb.showerror("Ошибка", "Не удалось экспортировать контакты, при экспортировании произошла ошибка.")
     return mb.showinfo("Внимание", "Контакты успешно экспортированы!")  
@@ -103,13 +103,11 @@ def exportFile():
 
 def updateContactList():
   try:
-    data = logic.findAll()
+    data = finds()
     text.delete(1.0, 'end')
     [text.insert("end", f"{i}\n") for i in data]
   except:
     mb.showerror("Ошибка", "При получении списка контактов произошла ошибка.")
-
-
 
 
 root = Tk()
@@ -117,10 +115,12 @@ root = Tk()
 root.geometry("800x500")
 root.resizable(width=False, height=False)
 root.title("Список контактов")
-data = logic.findAll()
+
+
 textLabel = Label(text="Список контактов").place(x=570, y=30)
 text = Text(width=40, height=20)
 text.place(x=475, y=60, width=300, height=400)
+data = finds()
 [text.insert("end", f"{i}\n") for i in data] 
 
 findeEntry = Entry(root)

@@ -1,3 +1,3 @@
-from controller import mainMenu
+import tk
 
-mainMenu()
+tk.root()

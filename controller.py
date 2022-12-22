@@ -1,25 +1,26 @@
-# from UI import menu
-# from logic import findAll,createContact,findeOneContact,updateContact,deleteContact,importContats,exportContacts
+import logic 
 
 
-# def mainMenu():
-#   menuPoint = menu()  
-#   match menuPoint:
-#     case 1:
-#       findAll()
-#     case 2:
-#       createContact()      
-#     case 3:
-#       findeOneContact()      
-#     case 4:
-#       updateContact()
-#     case 5:
-#       deleteContact()
-#     case 6:
-#       importContats()
-#     case 7:
-#       exportContacts() 
-#     case 0:
-#       return      
 
 
+
+def finds():
+ return logic.findAll()
+
+def findOne(findeData):
+ return logic.findeOneContact(findeData)
+
+def createds(dataSurname, dataName, dataPatronymic, dataTelephone):
+ return logic.createContact(dataSurname, dataName, dataPatronymic, dataTelephone)
+
+def updated(updateData,selection,updateDataInfo):
+ return logic.updateContact(updateData,selection,updateDataInfo)
+
+def remove(deleteData):
+ return logic.deleteContact(deleteData)
+
+def imports(path,fileName):
+  return logic.importContats(path,fileName)
+
+def exportss(path):
+  return logic.exportContacts(path) 

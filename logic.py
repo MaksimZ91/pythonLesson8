@@ -1,7 +1,6 @@
 import repository
-import controller
 import importLogic 
-import UI
+
 
 def createContact(surname,name, patronymic,telephone):  
   try:  
