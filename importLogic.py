@@ -5,32 +5,49 @@ import repository
 
 
 def importFromJSONandCSV(data, fileName=False): 
+  try:  
+    flag = True   
     if fileName:
       payload = csvReader(fileName)
     else:
       payload = json.loads(data)
-    for i in payload["contacts"]:
-        repository.writer(i) 
-    return True  
+    for i in payload["contacts"]: 
+      if not flag:        
+        return False
+      flag = repository.writer(i)
+    return flag            
+  except: return False
 
 
-def importFromXML(data):  
-  payload = xmltodict.parse(data) 
-  for i in payload["root"]["contacts"]:
-      repository.writer(i) 
-  return True 
+
+def importFromXML(data): 
+  try: 
+    flag = True
+    payload = xmltodict.parse(data) 
+    for i in payload["root"]["contacts"]:
+      if not flag:
+        return False
+      flag = repository.writer(i) 
+    return True 
+  except: return False
+
   
 
 def importFromTxT(payload):
-  data = payload.split("\n")  
-  for contact in data:
-     entity = contact.split()    
-     tmp = {}
-     for i in entity:
-       a = i.split(":")
-       tmp[a[0]] = a[1]         
-     repository.writer(tmp)
-  return True 
+  try:
+    flag = True
+    data = payload.split("\n")  
+    for contact in data:
+      entity = contact.split()    
+      tmp = {}
+      for i in entity:
+        a = i.split(":")
+        tmp[a[0]] = a[1] 
+      if not flag:
+        return False 
+      flag = repository.writer(tmp)
+    return True 
+  except: return False
 
   
 def csvReader(fileName):  

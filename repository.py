@@ -1,22 +1,25 @@
 from pathlib import Path 
 
-def reader(folderName, fileName, options=False): 
-  with open(folderName + "/" + fileName, "r", encoding="utf-8") as file:
-    if options:
-      payload = file.readlines()  
-      return payload 
-    payload = file.read()   
-  return payload
+def reader(path, options=False): 
+  try:  
+    with open(path, "r", encoding="utf-8") as file:
+      if options:
+        payload = file.readlines()  
+        return payload 
+      payload = file.read()   
+    return payload
+  except:
+    return False  
 
 
 def writer(payload):
-  try: 
+  try:   
     path = Path("outputDataOrMemory", "outputData.txt")  
     with open(path, "a+", encoding="utf-8") as file:
       file.writelines(f'\n')
       for key, value in payload.items():      
         file.writelines(f'{key}:{value} ')
-    return payload 
+    return True
   except:
     return False   
     
@@ -26,16 +29,14 @@ def update(payload):
     path = Path("outputDataOrMemory", "outputData.txt")  
     with open(path, "w+", encoding="utf-8") as file:       
       file.writelines("%s\n" % line for line in payload)
-    return payload
+    return True
   except:
     False   
 
 
-def eport(fileName, payload):
-  try:
-    path = Path("exportFile", fileName)  
-    with open(path, "w+", encoding="utf-8") as file:       
+def export(path, fileName, payload):
+  try:     
+    with open(f"{path}/{fileName}", "w+", encoding="utf-8") as file:       
       file.writelines("%s\n" % line for line in payload)
-    return payload
-  except:
-    False      
+    return True
+  except: return False      
