@@ -1,10 +1,12 @@
 import repository
 import importLogic 
+import loger
 
 
 def createContact(surname,name, patronymic,telephone):  
   try:  
-    data = {"surname":surname,"name":name,"patronymic":patronymic,"telephone":telephone} 
+    data = {"surname":surname,"name":name,"patronymic":patronymic,"telephone":telephone}
+    loger.log("create", data ) 
     return repository.writer(data) 
   except: return False
 
@@ -35,7 +37,8 @@ def updateContact(fio, selected, updateData):
             newContact[2] = updateData
           case "Телефон":
             newContact[3] = updateData  
-        result[i] = f"surname:{newContact[0]} name:{newContact[1]} patronymic:{newContact[2]} telephone:{newContact[3]}"  
+        result[i] = f"surname:{newContact[0]} name:{newContact[1]} patronymic:{newContact[2]} telephone:{newContact[3]}"
+        loger.log("update", result[i] )   
         return repository.update(result)
   except: return  False      
 
@@ -45,6 +48,7 @@ def findeOneContact(fio):
   path = "outputDataOrMemory/outputData.txt" 
   data = repository.reader(path)     
   result = [i for i in assistPrint(data) if fio in i] 
+  loger.log("findeOne", fio)
   return result
 
 
@@ -55,6 +59,7 @@ def deleteContact(fio):
     formatData =  assistPrint(data)   
     result = data.split("\n")  
     [result.remove(result[i]) for i,j in enumerate(formatData) if j == fio]
+    loger.log("delete", fio )
     return repository.update(result)
   except: return False  
 
@@ -82,6 +87,7 @@ def exportContacts(path):
     fileName = "export.txt"
     pathRead = "outputDataOrMemory/outputData.txt"   
     data = repository.reader(pathRead, True) 
+    loger.log("export", data)
     return repository.export(path, fileName, data)
   except: return False
 

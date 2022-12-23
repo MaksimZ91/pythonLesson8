@@ -1,14 +1,8 @@
-surname:Скрей name:Кот patronymic:Михайлович telephone:+79999999
+surname:Зигмудн name:Иван patronymic:Михайлович telephone:+789524545
 
-surname:Бегемотов name:Грыщ patronymic:Михайлович telephone:+789524545
+surname:Бегемотов name:ыфа patronymic:Михайлович telephone:+789524545
 
-surname:Зигмудн name:Фред patronymic:Михайлович telephone:+789524545
-
-surname:Бегемотов name:Кот patronymic:Михайлович telephone:+789524545 
-
-surname:Орлов name:Максим patronymic:Иванович telephone:+789557785 
-
-surname:Кац name:Егор patronymic:Петрович telephone:+78934646745 
+surname:Синицин name:Максим patronymic:Иванович telephone:+789557785
 
 surname:Бегемотов name:Кот patronymic:Михайлович telephone:+789524545 
 
@@ -22,10 +16,9 @@ surname:Орлов name:Максим patronymic:Иванович telephone:+7895
 
 surname:Кац name:Егор patronymic:Петрович telephone:+78934646745 
 
-
-
 surname:Бегемотов name:Кот patronymic:Михайлович telephone:+789524545 
 
 surname:Орлов name:Максим patronymic:Иванович telephone:+789557785 
 
 surname:Кац name:Егор patronymic:Петрович telephone:+78934646745 
+
